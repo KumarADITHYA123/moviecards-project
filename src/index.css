@@ -1,0 +1,355 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[hsl(var(--border))];
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+    position: relative;
+    overflow-x: hidden;
+  }
+}
+
+/* Paper texture background */
+.paper-bg {
+  @apply bg-white dark:bg-gray-900 transition-colors duration-300;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  position: relative;
+}
+
+.dark .paper-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scrapbook styles */
+@layer components {
+  /* Movie card with torn edge effect */
+  .movie-card {
+    @apply bg-white dark:bg-gray-800 rounded-sm relative overflow-hidden shadow-lg transition-transform duration-300 dark:text-gray-100;
+    transform-origin: center bottom;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+    clip-path: polygon(
+      0% 0%, 
+      100% 0%, 
+      100% 3%, 
+      98% 3.5%, 
+      99% 4%, 
+      97% 4.5%, 
+      99% 5%, 
+      100% 6%, 
+      98.5% 6.5%, 
+      100% 7%, 
+      99% 9%, 
+      100% 93%, 
+      99% 94%, 
+      100% 95%, 
+      98% 95.5%, 
+      99% 96%, 
+      98% 97%, 
+      100% 97.5%, 
+      99% 98%, 
+      97% 99%, 
+      0% 100%, 
+      1% 99%, 
+      0% 98%, 
+      2% 97%, 
+      1% 96%, 
+      0% 94%, 
+      1% 93%, 
+      0% 92%, 
+      1% 7%, 
+      0% 6%, 
+      2% 5%, 
+      0% 4%, 
+      2% 3%, 
+      0% 2%
+    );
+  }
+
+  .movie-card:hover {
+    transform: rotate(2deg) scale(1.05);
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.1);
+  }
+
+  /* Enhanced movie poster hover effects */
+  .movie-poster {
+    transition: all 0.3s ease;
+  }
+  
+  .movie-poster:hover {
+    transform: scale(1.02);
+    filter: brightness(110%) saturate(120%) drop-shadow(0 0 10px rgba(255,215,0,0.3));
+  }
+
+  /* Font styles for movie detail page */
+  .font-caveat {
+    font-family: 'Caveat', 'Comic Neue', cursive;
+    font-size: 1.2em;
+  }
+
+  /* Dark mode specific styles for movie detail */
+  .dark .movie-detail {
+    color: #FFD700; /* Gold text in dark mode */
+  }
+  
+  /* Polaroid style frame */
+  .polaroid {
+    @apply bg-white dark:bg-gray-800 p-2 pb-12 relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+  }
+
+  /* Genre filter styles */
+  .paper-fold {
+    @apply bg-white dark:bg-gray-800 relative overflow-hidden dark:text-gray-100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+
+  .paper-fold::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 15px 15px;
+    border-color: transparent transparent #e6e6e6 transparent;
+    box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+  }
+
+  .dark .paper-fold::before {
+    border-color: transparent transparent #374151 transparent;
+  }
+
+  /* Heart button animation */
+  .heart-btn {
+    @apply relative cursor-pointer transition-transform duration-300;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 2px 8px rgba(255, 0, 128, 0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+    border: 2px solid #fff;
+    outline: none;
+  }
+}
+
+/* Add light theme specific styles */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Bubble animation */
+.bubbles-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: auto;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  bottom: -50px;
+  z-index: 5;
+}
+
+.bubble.from-top {
+  bottom: auto;
+  top: -50px;
+  animation-name: float-down;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--bubble-opacity, 0.6);
+  }
+  90% {
+    opacity: var(--bubble-opacity, 0.6);
+  }
+  100% {
+    transform: translateY(-20vh) translateX(calc(var(--bubble-random, 0.5) * 100px)) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes float-down {
+  0% {
+    transform: translateY(-100px) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--bubble-opacity, 0.6);
+  }
+  90% {
+    opacity: var(--bubble-opacity, 0.6);
+  }
+  100% {
+    transform: translateY(120vh) translateX(calc(var(--bubble-random, 0.5) * 100px)) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.bubble.popping {
+  animation: pop 0.3s ease-out forwards;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.heart-beat {
+  animation: heartBeat 1s ease-in-out;
+}
+
+/* For mobile navigation */
+.menu-tab {
+  @apply fixed top-20 left-0 bg-amber-100 dark:bg-amber-800 py-3 px-5 rounded-r-lg shadow-md z-50 cursor-pointer transform transition-transform;
+}
+
+.menu-tab.open {
+  transform: translateX(250px);
+}
+
+/* Page transitions */
+.slide-in-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-in-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.slide-in-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.dark .bg-yellow-100 {
+  color: #000 !important;
+}

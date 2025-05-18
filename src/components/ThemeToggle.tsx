@@ -3,9 +3,9 @@ import { useTheme } from "../hooks/use-theme";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-
+  
   return (
-    <button
+    <button 
       className="fixed top-4 right-4 z-50 p-2 rounded-full bg-background text-foreground hover:bg-accent transition-colors duration-300"
       onClick={toggleTheme}
       aria-label="Toggle theme"

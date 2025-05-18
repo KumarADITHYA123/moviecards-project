@@ -31,10 +31,10 @@ Users should be able to:
 
 ### Screenshots
 
-![Screenshot 1](./public/screen%20shorts/Screenshot%202025-05-18%20003556.png)
-![Screenshot 2](./public/screen%20shorts/Screenshot%202025-05-18%20003744.png)
-![Screenshot 3](./public/screen%20shorts/Screenshot%202025-05-18%20004120.png)
-![Screenshot 4](./public/screen%20shorts/Screenshot%202025-05-18%20003817.png)
+![Screenshot 1](./public/screen%20shorts/Screenshot%202025-05-18%20232100.png)
+![Screenshot 2](./public/screen%20shorts/Screenshot%202025-05-18%20232140.png)
+![Screenshot 3](./public/screen%20shorts/Screenshot%202025-05-18%20232214.png)
+![Screenshot 4](./public/screen%20shorts/Screenshot%202025-05-18%20232257.png)
 
 ### Links
 

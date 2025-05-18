@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site: [https://moviecards-project.vercel.app/](https://moviecards-project.vercel.app/)
+- Live Site: [https://moviecards-project.netlify.app/](https://moviecards-project.netlify.app/)
 
 ## My Process
 
